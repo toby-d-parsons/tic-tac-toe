@@ -9,4 +9,4 @@ while !game.has_won? do
     game.display_board
 end
 
-p "Player #{$turn} wins!"
+p "Player #{$active_player[:player]} wins!"

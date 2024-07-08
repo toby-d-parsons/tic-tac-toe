@@ -1,7 +1,11 @@
 class Game
     def initialize
         $board = Array.new(9, "-")
-        $turn = 2
+        $player_list = [
+            {player: 1, symbol: 'x'},
+            {player: 2, symbol: 'o'}
+        ]
+        $active_player = $player_list[1]
     end
     def display_board
         p "| #{$board[0]} | #{$board[1]} | #{$board[2]} |"
@@ -9,8 +13,8 @@ class Game
         p "| #{$board[6]} | #{$board[7]} | #{$board[8]} |"
     end
     def make_move
-        p "It's player #{$turn}'s turn"
-        is_valid?(get_move) ? $board[$position] = $turn : retry_move
+        p "It's player #{$active_player[:player]}'s turn"
+        is_valid?(get_move) ? $board[$position] = $active_player[:symbol] : retry_move
     end
     def get_move
         $position = gets.chomp.to_i
@@ -36,11 +40,11 @@ class Game
         ]
         win_combos.any? do |combo|
             combo.all? do |position|
-                $board[position] == $turn
+                $board[position] == $active_player[:symbol]
             end
         end
     end
     def change_player
-        $turn == 1 ? $turn += 1 : $turn -= 1
+        $active_player == $player_list[0] ? $active_player = $player_list[1] : $active_player = $player_list[0]
     end
 end
