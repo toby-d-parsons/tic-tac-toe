@@ -44,6 +44,11 @@ class Game
             end
         end
     end
+    def is_draw?
+        $board.all? do |position|
+            position != '-'
+        end
+    end
     def change_player
         $active_player == $player_list[0] ? $active_player = $player_list[1] : $active_player = $player_list[0]
     end
