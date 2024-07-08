@@ -10,8 +10,18 @@ class Game
     end
     def make_move
         p "It's player #{$turn}'s turn"
-        position = gets.chomp.to_i
-        $board[position] = $turn
+        is_valid?(get_move) ? $board[$position] = $turn : retry_move
+    end
+    def get_move
+        $position = gets.chomp.to_i
+    end
+    def is_valid?(player_move)
+        $board[player_move] == "-"
+    end
+    def retry_move
+        p "Move is not valid, please try again"
+        display_board
+        make_move
     end
     def has_won?
         win_combos = [
