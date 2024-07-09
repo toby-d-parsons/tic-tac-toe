@@ -52,4 +52,7 @@ class Game
     def change_player
         $active_player == $player_list[0] ? $active_player = $player_list[1] : $active_player = $player_list[0]
     end
+    def declare_winner
+        p "Player #{$active_player[:player]} wins!"
+    end
 end

@@ -13,4 +13,6 @@ while !game.has_won? do
     game.display_board
 end
 
-p "Player #{$active_player[:player]} wins!"
+game.declare_winner
+
+# Now need to focus on restricting information access within the class
