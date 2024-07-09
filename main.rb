@@ -14,5 +14,3 @@ while !game.has_won? do
 end
 
 game.declare_winner
-
-# Now need to focus on restricting information access within the class
